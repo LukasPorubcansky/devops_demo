@@ -43,6 +43,6 @@ jobs:
         run: |
           echo "Deployment to DEV: ${{ github.event.inputs.boolean }}" / ${{ inputs.dev }} 
           echo "Deployment to TEST: ${{ github.event.inputs.boolean }}" / ${{ inputs.test }} 
-          echo "Deployment to STAGE: {{ github.event.inputs.boolean }}" / ${{ inputs.stage }} 
+          echo "Deployment to STAGE: ${{ github.event.inputs.boolean }}" / ${{ inputs.stage }} 
           echo "Deployment to PROD: ${{ github.event.inputs.boolean }}" / ${{ inputs.prod }} 
           echo "App version to be deployed: ${{ github.event.inputs.choice }}" / ${{ inputs.app_version }}
