@@ -39,7 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: greet
+      - name: Check Input
         run: |
           echo "Deployment to DEV: ${{ github.event.inputs.boolean }}" / ${{ inputs.dev }} 
           echo "Deployment to TEST: ${{ github.event.inputs.boolean }}" / ${{ inputs.test }} 
