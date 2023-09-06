@@ -3,15 +3,34 @@ name: CI
 on:
   workflow_dispatch:
     inputs:
-      flutter_version:
-        description: 'Environment'
-        required: true
-        type: string
-        default: 'DEV'
-      choice:
+      dev:
+        type: boolean
+        description: "DEV"
+        default: True
+
+      test:
+        type: boolean
+        description: "TEST"
+        default: True
+
+      stage:
+        type: boolean
+        description: "STAGE"
+        default: True
+
+      prod:
+        type: boolean
+        description: "PROD"
+        default: True
+
+      app_version:
+        description: 'Version'
+        required: True
         type: choice
-        description: "Environment"
+        default: '1.0.0'
         options:
-        - foo
-        - bar
-        - baz
+        - '1.0.0'
+        - '1.0.1'
+        - '1.0.2'
+        
+        
