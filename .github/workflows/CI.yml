@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      flutter_version:
+        description: 'Environment'
+        required: true
+        type: string
+        default: 'DEV'
+      publish_artifacts:
+        description: 'Publish artifacts'
+        required: true
+        default: 'true'
