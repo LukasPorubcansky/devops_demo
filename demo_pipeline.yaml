@@ -1,0 +1,12 @@
+name: demo-pipeline
+run-name: Deploy an app
+parameters:
+- name: env_name
+  displayName: Environment
+  type: string
+  default: DEV
+  values:
+  - DEV
+  - TEST
+  - STAGE
+  - PROD
