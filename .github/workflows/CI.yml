@@ -8,7 +8,10 @@ on:
         required: true
         type: string
         default: 'DEV'
-      publish_artifacts:
-        description: 'Publish artifacts'
-        required: true
-        default: 'true'
+      choice:
+        type: choice
+        description: "Environment"
+        options:
+        - foo
+        - bar
+        - baz
