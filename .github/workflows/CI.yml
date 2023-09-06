@@ -32,5 +32,15 @@ on:
         - '1.0.0'
         - '1.0.1'
         - '1.0.2'
-        
-        
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: greet
+        run: | 
+          echo "environment is ${{ github.event.inputs.environment }} / ${{ inputs.environment }}"
+          echo "boolean is ${{ github.event.inputs.boolean }}" / ${{ inputs.boolean }} 
+          echo "choice is ${{ github.event.inputs.choice }}" / ${{ inputs.choice }}
