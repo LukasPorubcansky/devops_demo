@@ -32,17 +32,60 @@ on:
         - '1.0.0'
         - '1.0.1'
         - '1.0.2'
-jobs:
-  build:
-    runs-on: ubuntu-latest
 
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: BuildApp
+  displayName: Build Apps
+  jobs:
+  - job: BuildFrontendApp
+    displayName: Build Frontend App
     steps:
-      - uses: actions/checkout@v2
+    - script: echo building frontend app
+      displayName: build frontend app
+    - script: echo running unit tests for frontend app
+      displayName: unit tests frontend
 
-      - name: Check Input
-        run: |
-          echo "Deployment to DEV: ${{ github.event.inputs.boolean }}" / ${{ inputs.dev }} 
-          echo "Deployment to TEST: ${{ github.event.inputs.boolean }}" / ${{ inputs.test }} 
-          echo "Deployment to STAGE: ${{ github.event.inputs.boolean }}" / ${{ inputs.stage }} 
-          echo "Deployment to PROD: ${{ github.event.inputs.boolean }}" / ${{ inputs.prod }} 
-          echo "App version to be deployed: ${{ github.event.inputs.choice }}" / ${{ inputs.app_version }}
+  - job: BuildBackendApp
+    displayName: Build Backend App
+    steps:
+    - script: echo building backend app
+      displayName: build backend app
+    - script: echo running unit tests for backend app
+      displayName: unit tests backend
+
+- stage: DeployDev
+  displayName: Deploy to DEV environment
+  jobs:
+  - job: DeployFrontendDev
+    displayName: Deploy frontend to DEV
+    steps:
+    - script: echo deploying frontend app to DEV
+      displayName: deploy frontend app to DEV
+
+  - job: DeployBackendDev
+    displayName: Deploy backend to DEV
+    steps:
+    - script: echo deploying backend app to DEV
+      displayName: deploy backend app to DEV
+
+- stage: DeployProd
+  displayName: Deploy to PROD environment
+  pool:
+    vmImage: 'macOS-10.14'
+  jobs:
+  - job: DeployFrontendProd
+    displayName: Deploy frontend to PROD
+    steps:
+    - script: echo deploying frontend app to PROD
+      displayName: deploy frontend app to PROD
+
+  - job: DeployBackendProd
+    displayName: Deploy backend to PROD
+    pool:
+      vmImage: 'vs2017-win2016'
+    steps:
+    - script: echo deploying backend app to PROD
+      displayName: deploy backend app to PROD
