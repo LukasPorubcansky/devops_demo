@@ -56,8 +56,32 @@ jobs:
   
   DeployDev:
     name: Deploy to DEV environment
+    if: inputs.dev
     runs-on: ubuntu-latest
     steps:
       - name: deploy frontend app to DEV
         run: echo deploying frontend app to DEV
         
+  DeployTest:
+    name: Deploy to TEST environment
+    if: inputs.test
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy frontend app to TEST
+        run: echo deploying frontend app to TEST
+        
+  DeployStage:
+    name: Deploy to STAGE environment
+    if: inputs.stage
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy frontend app to STAGE
+        run: echo deploying frontend app to STAGE
+
+  DeployProd:
+    name: Deploy to PROD environment
+    if: inputs.prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy frontend app to PROD
+        run: echo deploying frontend app to PROD
